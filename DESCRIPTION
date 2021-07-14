@@ -1,0 +1,20 @@
+Package: NDATA
+Title: A Network Assisted Method to Analyzing De Novo Mutations
+Version: 1.0
+Authors@R: 
+    person(given = "Yuhan",
+           family = "Xie",
+           role = c("aut", "cre"),
+           email = "yuhan.xie@yale.edu",
+           comment = c(ORCID = "0000-0002-1738-0885"))
+Description: A novel statistical model that can leverage information from publicly available protein-protein interaction databases to increase power in identifying risk genes.
+License: GPL(>=2)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Depends: 
+    R (>= 3.50), Matrix, methods
+Suggests: 
+    testthat (>= 3.0.0)
+
