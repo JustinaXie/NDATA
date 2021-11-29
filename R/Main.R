@@ -160,7 +160,7 @@ likpw<- function(nodesLabel,Y,mu,N,theta_1=NULL) {
 #'
 #' @param Gene The vector of gene symbols.
 #' @param q_0 The vector of posterior probabilities of P(S_i=-1) estimated from Gibbs.
-#' @return The vector of FDR (\code{FDR}) for all genes(\code{Gene}) .
+#' @return The data frame including FDR (\code{FDR}) for all genes(\code{Gene}) .
 #'
 Get_Post_FDR<-function(Gene,q_0){
   #Adapted from M-DATA
@@ -171,7 +171,7 @@ Get_Post_FDR<-function(Gene,q_0){
   lfdr_order_no$FDR_no<-cumsum(lfdr_order_no$Z_no)/(1:Num)
   tmp_no<-lfdr_order_no[order(lfdr_order_no$index,decreasing = FALSE),]
   tmp_FDR_no<-tmp_no$FDR_no
-  return(list(Gene=Gene,FDR=tmp_FDR_no))
+  return(data.frame(Gene=Gene,FDR=tmp_FDR_no))
 }
 
 #'Estimate the parameters iteratively
@@ -347,7 +347,7 @@ Gibbs.trueParam<-function(true_theta_0,nodesNeighbor,w,W=NULL,mcmc_samples=1000,
 }
 
 icm_randsearch_theta0<-function(nodesNeighbor,w=NULL,W=NULL,
-                                Y,mu,N,
+                                Y,X=rep(1,length(Y)),mu,N,
                                 theta_0_init,theta_1_init,
                                 maxiter=100,threshold=1e-3,lambda=0.5,initLabel=NULL){
   nNodes<-length(Y)

@@ -12,7 +12,7 @@ Get_Post_FDR(Gene, q_0)
 \item{q_0}{The vector of posterior probabilities of P(S_i=-1) estimated from Gibbs.}
 }
 \value{
-The vector of FDR (\code{FDR}) for all genes(\code{Gene}) .
+The data frame including FDR (\code{FDR}) for all genes(\code{Gene}) .
 }
 \description{
 Calculate the FDR for all genes

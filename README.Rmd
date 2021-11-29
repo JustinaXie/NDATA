@@ -32,3 +32,56 @@ Then, you can install *N-DATA*
 ```{R}
 install_github("JustinaXie/NDATA")
 ```
+
+## Network Analysis
+```{r}
+#load the simulated network and dnm data
+#data("network")
+#data("dnm_data")
+
+#Input for DNM: DNM counts, mutability, and number of trios
+Y<-dnm_data$Count
+mu<-dnm_data$Mut
+N<-5000
+
+#Calculate the neighbor information using the network input
+neighbors<-apply(network,1,function(x) which(x==1))
+
+#Calculate the weight information
+d<-colSums(network)
+w1<-sqrt(d)
+
+#Initiate the labels, one scheme is to set gene with dnm>0 as candidate risk genes
+initLabel<-rep(-1,length(Y))
+initLabel[Y>0]<-1
+
+#Estimate the parameters using the EM-ICM algorithm
+icm_res<-icm_randsearch(nodesNeighbor=neighbors,w=w1,
+                        Y=Y,N=N,mu=mu,
+                        theta_0_init = c(-4,0,0),theta_1_init =3,threshold = 1e-4,lambda = 0.5,initLabel = initLabel)
+#Print the estimated theta_0
+icm_res$theta_0_est
+#Print the estimated theta_1
+icm_res$theta_1_est
+
+#Infer the labels using Gibbs sampler
+Gibbs<-Gibbs.post(icm_res$theta_0_est,icm_res$theta_1_est,neighbors,w=w1,W=NULL,
+                  Y=Y,N,mu,
+                  mcmc_samples=2000,burnin=1000,thin=1,initLabel = initLabel)
+
+#Check the convergence of the algorithm
+plot(1:2000,Gibbs$llk/length(Y),type = "l")
+q_0<-Gibbs$q_0
+
+#Generate the result data frame with gene symbol and corresponding FDR
+Results<-Get_Post_FDR(dnm_data$Gene,q_0)
+
+#Number of significant genes
+sum(Results$FDR<0.05)
+
+#List of significant genes
+Results$Gene[Results$FDR<0.05]
+```
+
+## Acknowledgement
+Part of the code is modified from DAWN http://www.compgen.pitt.edu/DAWN/DAWN_homepage.htm. We thank the authors for sharing the code.
