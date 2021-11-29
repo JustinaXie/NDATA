@@ -36,8 +36,8 @@ install_github("JustinaXie/NDATA")
 ## Network Analysis
 ```{r}
 #load the simulated network and dnm data
-#data("network")
-#data("dnm_data")
+data("network")
+data("dnm_data")
 
 #Input for DNM: DNM counts, mutability, and number of trios
 Y<-dnm_data$Count
