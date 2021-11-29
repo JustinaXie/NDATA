@@ -1,23 +1,5 @@
----
-output: github_document
----
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
-
-# N-DATA: A Network Assisted Method to Analyzing De Novo Mutations
-
-<!-- badges: start -->
-<!-- badges: end -->
-
+## N-DATA: A Network Assisted Method to Analyzing De Novo Mutations
+* Yuhan Xie, Wei Jiang, Weilai Dong, Hongyu Li, Sheng Chih Jin, Martina Brueckner, Hongyu Zhao
 
 ## Installation
 To install the software for *N-DATA*, you need package *devtools* first
