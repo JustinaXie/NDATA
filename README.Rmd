@@ -22,3 +22,5 @@ install_github("JustinaXie/NDATA")
 
 ## Acknowledgement
 Part of the code is modified from DAWN http://www.compgen.pitt.edu/DAWN/DAWN_homepage.htm. We thank the authors for sharing the code.
+
+Please cite the N-DATA manuscript(https://www.medrxiv.org/content/10.1101/2021.11.30.21267069v1) if you would like to use our software.
