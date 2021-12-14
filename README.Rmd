@@ -3,7 +3,7 @@ title: "N-DATA"
 output: no
 ---
 
-## N-DATA: A Network Assisted Method to Analyzing De Novo Mutations
+## N-DATA: A Network Assisted Method to Analyzing De Novo Variants
 * Yuhan Xie, Wei Jiang, Weilai Dong, Hongyu Li, Sheng Chih Jin, Martina Brueckner, Hongyu Zhao
 
 ## Installation
