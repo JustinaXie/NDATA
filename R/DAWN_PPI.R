@@ -16,7 +16,7 @@
 ##          result_DAWN$b2 - estimated coefficient for additional covariate (default=0 if additional covariate is not included)
 ##          result_DAWN$mu1 - estimated mean
 ##          result_DAWN$sigmas - estimated variance
-DAWN_HMRF <- function(pv, graph,covGene, fixedGene, pthres_hmrf=0.05, iter=100, trimthres=4,initLabel) {
+DAWN_HMRF <- function(pv, graph,covGene, fixedGene, pthres_hmrf=0.05, iter=100, trimthres=5,initLabel) {
   ## initialization
   zscore <- qnorm(1 - pv)
   if (missing(pthres_hmrf)) {
