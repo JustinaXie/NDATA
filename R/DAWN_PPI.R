@@ -26,7 +26,7 @@ DAWN_HMRF <- function(pv, graph,covGene, fixedGene, pthres_hmrf=0.05, iter=100, 
     iter <- 100
   }
   if (missing(trimthres)) {
-    trimthres <- 4
+    trimthres <- 5
   }
   addCovGene <- hasArg(covindex)
   addFixedGene <- hasArg(fixindex)
